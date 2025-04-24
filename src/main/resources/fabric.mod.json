@@ -5,7 +5,7 @@
 	"name": "Chat Message Confirmation",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
-		"Me!"
+		"SeriousGuy888 (billzonium_trioxide)"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
@@ -13,21 +13,14 @@
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/chat-message-confirmation/icon.png",
-	"environment": "*",
+	"environment": "client",
 	"entrypoints": {
 		"main": [
 			"io.github.seriousguy888.chatmessageconfirmation.ChatMessageConfirmation"
-		],
-		"client": [
-			"io.github.seriousguy888.chatmessageconfirmation.ChatMessageConfirmationClient"
 		]
 	},
 	"mixins": [
-		"chat-message-confirmation.mixins.json",
-		{
-			"config": "chat-message-confirmation.client.mixins.json",
-			"environment": "client"
-		}
+		"chat-message-confirmation.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.13",
