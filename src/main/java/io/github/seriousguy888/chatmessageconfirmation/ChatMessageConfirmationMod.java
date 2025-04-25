@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 public class ChatMessageConfirmationMod implements ModInitializer {
     private static ChatMessageConfirmationMod instance;
-    public static final String MOD_ID = "chat-message-confirmation";
+    public static final String MOD_ID = "chat_message_confirmation";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     private MinecraftClient client;
 

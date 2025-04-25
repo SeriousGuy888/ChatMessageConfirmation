@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 1,
-	"id": "chat-message-confirmation",
+	"id": "chat_message_confirmation",
 	"version": "${version}",
 	"name": "Chat Message Confirmation",
 	"description": "This is an example description! Tell everyone what your mod is about!",
@@ -12,7 +12,7 @@
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/chat-message-confirmation/icon.png",
+	"icon": "assets/chat_message_confirmation/icon.png",
 	"environment": "client",
 	"entrypoints": {
 		"main": [
