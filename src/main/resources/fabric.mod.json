@@ -16,7 +16,7 @@
 	"environment": "client",
 	"entrypoints": {
 		"main": [
-			"io.github.seriousguy888.chatmessageconfirmation.ChatMessageConfirmation"
+			"io.github.seriousguy888.chatmessageconfirmation.ChatMessageConfirmationMod"
 		]
 	},
 	"mixins": [],

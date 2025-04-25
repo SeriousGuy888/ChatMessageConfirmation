@@ -3,7 +3,7 @@ package io.github.seriousguy888.chatmessageconfirmation.gui;
 import io.github.cottonmc.cotton.gui.client.LightweightGuiDescription;
 import io.github.cottonmc.cotton.gui.widget.*;
 import io.github.cottonmc.cotton.gui.widget.data.Insets;
-import io.github.seriousguy888.chatmessageconfirmation.ChatMessageConfirmation;
+import io.github.seriousguy888.chatmessageconfirmation.ChatMessageConfirmationMod;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
 
@@ -33,7 +33,7 @@ public class ConfirmationGui extends LightweightGuiDescription {
 
         MinecraftClient client = MinecraftClient.getInstance();
         WButton yesButton = new WButton(Text.literal("Confirm")).setOnClick(() -> {
-            ChatMessageConfirmation.getInstance().sendPendingMessage(messageContents);
+            ChatMessageConfirmationMod.getInstance().sendPendingMessage(messageContents);
             client.send(() -> client.setScreen(null));
         });
         WButton noButton = new WButton(Text.translatable("gui.cancel")).setOnClick(() -> {

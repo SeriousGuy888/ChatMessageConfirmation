@@ -11,8 +11,8 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ChatMessageConfirmation implements ModInitializer {
-    private static ChatMessageConfirmation instance;
+public class ChatMessageConfirmationMod implements ModInitializer {
+    private static ChatMessageConfirmationMod instance;
     public static final String MOD_ID = "chat-message-confirmation";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     private MinecraftClient client;
@@ -20,7 +20,7 @@ public class ChatMessageConfirmation implements ModInitializer {
     private static final String BYPASS_PREFIX = "#";
     private boolean nextMessageShouldBypass = false;
 
-    public static ChatMessageConfirmation getInstance() {
+    public static ChatMessageConfirmationMod getInstance() {
         return instance;
     }
 
