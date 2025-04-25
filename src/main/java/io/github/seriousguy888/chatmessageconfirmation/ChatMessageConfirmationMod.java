@@ -35,8 +35,18 @@ public class ChatMessageConfirmationMod implements ModInitializer {
                 return true;
             }
 
-            client.send(() -> client.setScreen(new ConfirmationScreen(new ConfirmationGui(message))));
+            client.send(() -> client.setScreen(new ConfirmationScreen(new ConfirmationGui(message, false))));
 
+            return false;
+        });
+
+        ClientSendMessageEvents.ALLOW_COMMAND.register(command -> {
+            if (nextMessageShouldBypass) {
+                nextMessageShouldBypass = false;
+                return true;
+            }
+
+            client.send(() -> client.setScreen(new ConfirmationScreen(new ConfirmationGui(command, true))));
             return false;
         });
 
@@ -49,22 +59,27 @@ public class ChatMessageConfirmationMod implements ModInitializer {
         });
     }
 
-    public void sendPendingMessage(String pendingMessage) {
+    public void sendPendingMessage(String messageOrCommand, boolean isCommand) {
         ClientPlayerEntity player = client.player;
         if (player == null) {
-            LOGGER.warn("Attempted to send pending chat message when there is no ClientPlayerEntity.");
+            LOGGER.warn("Attempted to send pending message/command when there is no ClientPlayerEntity.");
             return;
         }
 
         ClientPlayNetworkHandler networkHandler = client.getNetworkHandler();
         if (networkHandler == null) {
-            LOGGER.warn("Attempted to send pending chat message when there is no ClientPlayNetworkHandler.");
+            LOGGER.warn("Attempted to send pending message/command when there is no ClientPlayNetworkHandler.");
             return;
         }
 
         client.send(() -> {
             nextMessageShouldBypass = true;
-            networkHandler.sendChatMessage(pendingMessage);
+
+            if (isCommand) {
+                networkHandler.sendChatCommand(messageOrCommand);
+            } else {
+                networkHandler.sendChatMessage(messageOrCommand);
+            }
         });
     }
 }
