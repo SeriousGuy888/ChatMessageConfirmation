@@ -13,13 +13,12 @@ import org.slf4j.LoggerFactory;
 
 public class ChatMessageConfirmation implements ModInitializer {
     private static ChatMessageConfirmation instance;
-
     public static final String MOD_ID = "chat-message-confirmation";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+    private MinecraftClient client;
 
     private static final String BYPASS_PREFIX = "#";
-
-    private MinecraftClient client;
+    private boolean nextMessageShouldBypass = false;
 
     public static ChatMessageConfirmation getInstance() {
         return instance;
@@ -31,7 +30,8 @@ public class ChatMessageConfirmation implements ModInitializer {
         client = MinecraftClient.getInstance();
 
         ClientSendMessageEvents.ALLOW_CHAT.register(message -> {
-            if (message.startsWith(BYPASS_PREFIX)) {
+            if (message.startsWith(BYPASS_PREFIX) || nextMessageShouldBypass) {
+                nextMessageShouldBypass = false;
                 return true;
             }
 
@@ -63,7 +63,8 @@ public class ChatMessageConfirmation implements ModInitializer {
         }
 
         client.send(() -> {
-            networkHandler.sendChatMessage(BYPASS_PREFIX + pendingMessage);
+            nextMessageShouldBypass = true;
+            networkHandler.sendChatMessage(pendingMessage);
         });
     }
 }
