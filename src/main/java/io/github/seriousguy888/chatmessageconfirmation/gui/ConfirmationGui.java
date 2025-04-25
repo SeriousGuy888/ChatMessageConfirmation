@@ -32,11 +32,11 @@ public class ConfirmationGui extends LightweightGuiDescription {
         root.add(textField, 1, 1, gridWidth - 2, gridHeight - 2);
 
         MinecraftClient client = MinecraftClient.getInstance();
-        WButton yesButton = new WButton(Text.translatable("gui.yes")).setOnClick(() -> {
+        WButton yesButton = new WButton(Text.literal("Confirm")).setOnClick(() -> {
             ChatMessageConfirmation.getInstance().sendPendingMessage(messageContents);
             client.send(() -> client.setScreen(null));
         });
-        WButton noButton = new WButton(Text.translatable("gui.no")).setOnClick(() -> {
+        WButton noButton = new WButton(Text.translatable("gui.cancel")).setOnClick(() -> {
             client.send(() -> client.setScreen(null));
         });
         root.add(yesButton, 0, gridHeight - 1, gridWidth / 2, 1);
