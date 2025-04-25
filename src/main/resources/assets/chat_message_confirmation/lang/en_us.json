@@ -1,0 +1,6 @@
+{
+  "gui.chat_message_confirmation.are_you_sure.chat_message": "Are you sure you want to send this message?",
+  "gui.chat_message_confirmation.are_you_sure.command": "Are you sure you want to run this command?",
+  "gui.chat_message_confirmation.button.confirm": "Confirm",
+  "gui.chat_message_confirmation.button.cancel": "Cancel"
+}
