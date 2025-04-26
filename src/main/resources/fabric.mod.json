@@ -7,21 +7,29 @@
   "authors": [
     "billzonium_trioxide (SeriousGuy888)"
   ],
-  "license": "CC0-1.0",
+  "contact": {
+    "issues": "https://github.com/SeriousGuy888/ChatMessageConfirmation/issues",
+    "sources": "https://github.com/SeriousGuy888/ChatMessageConfirmation"
+  },
+  "license": "MIT",
   "icon": "assets/chat_message_confirmation/icon.png",
   "environment": "client",
   "entrypoints": {
     "main": [
       "io.github.seriousguy888.chatmessageconfirmation.ChatMessageConfirmationMod"
+    ],
+    "modmenu":  [
+      "io.github.seriousguy888.chatmessageconfirmation.config.ModMenuIntegration"
     ]
   },
-  "mixins": [
-    "chat_message_confirmation.mixins.json"
-  ],
+  "mixins": [],
   "depends": {
     "fabricloader": ">=0.16.13",
     "minecraft": "~1.21.5",
     "java": ">=21",
     "fabric-api": "*"
+  },
+  "recommends": {
+    "modmenu": ">=14.0.0"
   }
 }

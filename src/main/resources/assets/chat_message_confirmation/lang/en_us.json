@@ -3,5 +3,7 @@
   "gui.chat_message_confirmation.are_you_sure.command": "Are you sure you want to run this command?",
   "gui.chat_message_confirmation.button.confirm": "Confirm",
   "gui.chat_message_confirmation.button.cancel": "Cancel",
-  "options.chat_message_confirmation.allow_bypass": "Prefix \"#\" on chat messages to skip confirmation"
+  "options.chat_message_confirmation.title": "Settings for Chat Message Confirmation",
+  "options.chat_message_confirmation.allow_bypass": "Use Prefix to Skip Confirmation",
+  "options.chat_message_confirmation.bypass_prefix": "Bypass Prefix"
 }

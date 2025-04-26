@@ -1,9 +1,0 @@
-{
-  "required": true,
-  "package": "io.github.seriousguy888.chatmessageconfirmation.mixin",
-  "compatibilityLevel": "JAVA_21",
-  "client": ["ChatOptionsScreenMixin"],
-  "injectors": {
-    "defaultRequire": 1
-  }
-}
