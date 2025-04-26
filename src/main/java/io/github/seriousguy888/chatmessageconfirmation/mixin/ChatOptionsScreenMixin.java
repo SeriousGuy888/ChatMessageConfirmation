@@ -25,7 +25,7 @@ public abstract class ChatOptionsScreenMixin extends GameOptionsScreen {
     @Unique
     private static final SimpleOption<Boolean> ALLOW_BYPASS = SimpleOption.ofBoolean(
             ALLOW_BYPASS_OPTION_NAME,
-            true,
+            ChatMessageConfirmationMod.CONFIG.ALLOW_BYPASS,
             newValue -> {
                 ChatMessageConfirmationMod.CONFIG.ALLOW_BYPASS = newValue;
                 ChatMessageConfirmationMod.CONFIG.save();
