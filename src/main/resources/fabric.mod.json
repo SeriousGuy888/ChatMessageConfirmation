@@ -1,32 +1,27 @@
 {
-	"schemaVersion": 1,
-	"id": "chat_message_confirmation",
-	"version": "${version}",
-	"name": "Chat Message Confirmation",
-	"description": "This is an example description! Tell everyone what your mod is about!",
-	"authors": [
-		"SeriousGuy888 (billzonium_trioxide)"
-	],
-	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
-	},
-	"license": "CC0-1.0",
-	"icon": "assets/chat_message_confirmation/icon.png",
-	"environment": "client",
-	"entrypoints": {
-		"main": [
-			"io.github.seriousguy888.chatmessageconfirmation.ChatMessageConfirmationMod"
-		]
-	},
-	"mixins": [],
-	"depends": {
-		"fabricloader": ">=0.16.13",
-		"minecraft": "~1.21.5",
-		"java": ">=21",
-		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
-	}
+  "schemaVersion": 1,
+  "id": "chat_message_confirmation",
+  "version": "${version}",
+  "name": "Chat Message Confirmation",
+  "description": "Displays a confirmation screen when you try to send a chat message or command.",
+  "authors": [
+    "billzonium_trioxide (SeriousGuy888)"
+  ],
+  "license": "CC0-1.0",
+  "icon": "assets/chat_message_confirmation/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "io.github.seriousguy888.chatmessageconfirmation.ChatMessageConfirmationMod"
+    ]
+  },
+  "mixins": [
+    "chat_message_confirmation.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.13",
+    "minecraft": "~1.21.5",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
 }

@@ -1,5 +1,6 @@
 package io.github.seriousguy888.chatmessageconfirmation;
 
+import io.github.seriousguy888.chatmessageconfirmation.config.Config;
 import io.github.seriousguy888.chatmessageconfirmation.gui.ConfirmationGui;
 import io.github.seriousguy888.chatmessageconfirmation.gui.ConfirmationScreen;
 import net.fabricmc.api.ModInitializer;
@@ -12,14 +13,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ChatMessageConfirmationMod implements ModInitializer {
-    private static ChatMessageConfirmationMod instance;
     public static final String MOD_ID = "chat_message_confirmation";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-    private MinecraftClient client;
+    public static final Config CONFIG = new Config();
 
-    private static final String BYPASS_PREFIX = "#";
+    private MinecraftClient client;
     private boolean nextMessageShouldBypass = false;
 
+    private static ChatMessageConfirmationMod instance;
     public static ChatMessageConfirmationMod getInstance() {
         return instance;
     }
@@ -30,7 +31,7 @@ public class ChatMessageConfirmationMod implements ModInitializer {
         client = MinecraftClient.getInstance();
 
         ClientSendMessageEvents.ALLOW_CHAT.register(message -> {
-            if (message.startsWith(BYPASS_PREFIX) || nextMessageShouldBypass) {
+            if (nextMessageShouldBypass || (CONFIG.ALLOW_BYPASS && message.startsWith(CONFIG.BYPASS_PREFIX))) {
                 nextMessageShouldBypass = false;
                 return true;
             }
@@ -51,8 +52,8 @@ public class ChatMessageConfirmationMod implements ModInitializer {
         });
 
         ClientSendMessageEvents.MODIFY_CHAT.register(message -> {
-            if (message.startsWith(BYPASS_PREFIX)) {
-                return message.substring(BYPASS_PREFIX.length());
+            if (CONFIG.ALLOW_BYPASS && message.startsWith(CONFIG.BYPASS_PREFIX)) {
+                return message.substring(CONFIG.BYPASS_PREFIX.length());
             } else {
                 return message;
             }
